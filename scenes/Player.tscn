@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://5kfj1jr10k6f"]
+
+[ext_resource type="Texture2D" uid="uid://b7j4mepkx6gds" path="res://assets/kenney_roguelike-characters/Spritesheet/roguelikeChar_transparent.png" id="2_31nhy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uwg3"]
+atlas = ExtResource("2_31nhy")
+region = Rect2(0, 153, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w3e1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uwg3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_isepc"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w3e1x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_isepc")
