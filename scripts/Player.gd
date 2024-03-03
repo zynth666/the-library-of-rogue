@@ -1,28 +1,32 @@
 extends CharacterBody2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@export var speed = 200
 
+var last_action = "none"
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+func get_current_action():
+	var actions = InputMap.get_actions()
+	
+	for action in actions:
+		if Input.is_action_pressed(action):
+			return action
+	
+	return "none"
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+func get_input():
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	var current_action = get_current_action()
+	
+	if current_action != "none":
+		animated_sprite_2d.play("walk_" + current_action)
+		last_action = current_action
+	elif last_action != "none":
+		animated_sprite_2d.play("idle_" + last_action)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		animated_sprite_2d.play("idle_down")
+	
+	velocity = input_direction * speed
 
+func _physics_process(_delta):
+	get_input()
 	move_and_slide()
