@@ -7,6 +7,7 @@
 size = Vector2(10, 12)
 
 [node name="Crystal" type="RigidBody2D"]
+mass = 0.1
 script = ExtResource("1_jx07c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

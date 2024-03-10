@@ -1,14 +1,22 @@
 extends RigidBody2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@export var speed = 650
+
+@export var speed = 400
 var direction: Vector2
 
 func _ready():
-	direction = get_global_mouse_position().normalized()
+	var mouse_pos = get_global_mouse_position()
+	direction = (mouse_pos - to_global(position)).normalized()
+	rotate(get_angle_to(mouse_pos) - PI / 2)
+	reparent(get_node("/root"))
+	animated_sprite_2d.play("default")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	
 	var motion = direction * speed * delta
-	move_and_collide(motion)
+	var collision = move_and_collide(motion)
+	
+	if collision:
+		queue_free()

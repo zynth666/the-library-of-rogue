@@ -406,11 +406,10 @@ position_smoothing_speed = 6.0
 [node name="WeaponRotationAnchor" type="Node2D" parent="."]
 script = ExtResource("3_v0xov")
 
-[node name="Weapon" type="Sprite2D" parent="WeaponRotationAnchor" node_paths=PackedStringArray("anchor")]
-position = Vector2(24, 8)
+[node name="Weapon" type="Sprite2D" parent="WeaponRotationAnchor"]
+position = Vector2(40, 8)
 texture = ExtResource("3_pfxe3")
 script = ExtResource("5_f5h8u")
-anchor = NodePath("../..")
 
 [node name="AttackTimer" type="Timer" parent="WeaponRotationAnchor/Weapon"]
 wait_time = 0.2
