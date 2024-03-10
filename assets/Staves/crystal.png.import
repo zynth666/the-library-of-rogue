@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpuxri6k6ox5d"
-path="res://.godot/imported/Lecter-00.png-28f985b044baaa96932c4823e4f94cae.ctex"
+uid="uid://bjfubrqhh11yn"
+path="res://.godot/imported/crystal.png-712b7b6db27507e0fe7ca5949022bfce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Library/Library/Lecter-00.png"
-dest_files=["res://.godot/imported/Lecter-00.png-28f985b044baaa96932c4823e4f94cae.ctex"]
+source_file="res://assets/Staves/crystal.png"
+dest_files=["res://.godot/imported/crystal.png-712b7b6db27507e0fe7ca5949022bfce.ctex"]
 
 [params]
 

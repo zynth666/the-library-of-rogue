@@ -1,11 +1,18 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@export var speed = 200
+@export var speed = 150
 
 var last_action = "none"
 
+signal attack
+
+func handle_attack():
+	if Input.is_action_pressed("attack"):
+		attack.emit()
+	
+
 func get_current_action():
-	var actions = InputMap.get_actions()
+	var actions = ["left", "right", "up", "down"]
 	
 	for action in actions:
 		if Input.is_action_pressed(action):
@@ -24,6 +31,8 @@ func get_input():
 		animated_sprite_2d.play("idle_" + last_action)
 	else:
 		animated_sprite_2d.play("idle_down")
+		
+	handle_attack()
 	
 	velocity = input_direction * speed
 

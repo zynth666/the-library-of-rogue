@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpjc5f2v8sow6"]
+
+[ext_resource type="Script" path="res://scripts/Crystal.gd" id="1_jx07c"]
+[ext_resource type="SpriteFrames" uid="uid://dkd2rd7tyyn21" path="res://assets/Staves/crystal.tres" id="1_mm7px"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_310j0"]
+size = Vector2(10, 12)
+
+[node name="Crystal" type="RigidBody2D"]
+script = ExtResource("1_jx07c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_310j0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_mm7px")
+frame_progress = 0.482002
