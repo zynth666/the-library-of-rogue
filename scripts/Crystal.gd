@@ -2,11 +2,14 @@ extends RigidBody2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
-@export var speed = 400
+@export var speed = 150
+@export var damage = 10
+@export var angle = 0
 var direction: Vector2
 
 func _ready():
 	var mouse_pos = get_global_mouse_position()
+	mouse_pos.x += angle
 	direction = (mouse_pos - to_global(position)).normalized()
 	rotate(get_angle_to(mouse_pos) - PI / 2)
 	reparent(get_node("/root"))
@@ -23,5 +26,5 @@ func _physics_process(delta):
 		
 		if collision.get_collider().is_in_group("mob"):
 			var mob = collision.get_collider()
-			mob.die()
+			mob.hit(damage)
 		

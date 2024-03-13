@@ -1,10 +1,12 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@export var speed = 150
+@export var speed = 100
+@export var life = 100
 
 var last_action = "none"
 
 signal attack
+signal is_hit
 
 func handle_attack():
 	if Input.is_action_pressed("attack"):
@@ -39,3 +41,12 @@ func get_input():
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider.is_in_group("mob"):
+			var mob = collision.get_collider()
+			mob.attack(self)
+			is_hit.emit(mob.damage)
