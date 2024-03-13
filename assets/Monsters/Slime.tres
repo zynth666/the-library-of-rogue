@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cpxn174dv5orv"]
+
+[ext_resource type="Texture2D" uid="uid://c2ms8mcncrk5m" path="res://assets/Monsters/slime.png" id="1_ecm27"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkjgs"]
+atlas = ExtResource("1_ecm27")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjn3k"]
+atlas = ExtResource("1_ecm27")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lgju"]
+atlas = ExtResource("1_ecm27")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6wrn"]
+atlas = ExtResource("1_ecm27")
+region = Rect2(96, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkjgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjn3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lgju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6wrn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

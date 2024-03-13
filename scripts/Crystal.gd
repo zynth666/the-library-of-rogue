@@ -20,3 +20,8 @@ func _physics_process(delta):
 	
 	if collision:
 		queue_free()
+		
+		if collision.get_collider().is_in_group("mob"):
+			var mob = collision.get_collider()
+			mob.die()
+		
